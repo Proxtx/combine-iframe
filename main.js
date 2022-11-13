@@ -13,8 +13,11 @@ export const serve = (data) => {
             ev.data.substring(10, jobIdLength + 10) +
             JSON.stringify(
               await data(JSON.parse(ev.data.substring(10 + jobIdLength)))
-            )
+            ),
+          "*"
         );
+      } else if (ev.data.substring(0, 4) == "ping") {
+        ev.source.postMessage("pong" + ev.data.substring(4), "*");
       }
     },
     false
@@ -32,7 +35,7 @@ export const genCombine = (module, genModule, server) => {
         resolve();
       }
     });
-    server.postMessage("combine-ts" + jobId + JSON.stringify(body));
+    server.postMessage("combine-ts" + jobId + JSON.stringify(body), "*");
     await new Promise((r) => {
       resolve = r;
     });
