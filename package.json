@@ -1,6 +1,6 @@
 {
   "name": "@proxtx/combine-iframe",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A combine wrapper for HTML5 iframes (combine 2.0)",
   "main": "main.js",
   "type": "module",
